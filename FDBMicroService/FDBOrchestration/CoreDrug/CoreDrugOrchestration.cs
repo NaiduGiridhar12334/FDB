@@ -1,6 +1,7 @@
 ﻿using FDBApiConnector.CoreDrug.Interface;
 using FDBOrchestration.CoreDrug.Interface;
 using FDBViewModel.CoreDrug;
+using FDBViewModel.CoreDrug.ApiConnector;
 using FDBViewModel.CoreDrug.Business;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,12 @@ namespace FDBOrchestration.CoreDrug
                 }
             }
             return fDBDispensableResponses;
+        }
+
+        public async Task<ApiERXDispensableDrugResponse> GetERXDispensableDrugs()
+        {
+            var response = await this._coreDrugService.GetERXDispensableDrugs();
+            return response;
         }
     }
 }

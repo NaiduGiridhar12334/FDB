@@ -13,6 +13,7 @@ namespace FDBWebApiService.Controllers
         {
             _coreDrugOrchestartion = coreDrugOrchestartion;
         }
+        
         [HttpGet("GetDispensableDrugs")]
         public async Task<IActionResult> GetDispensableDrugs(string DrugNameDesc = null)
         {
@@ -27,6 +28,26 @@ namespace FDBWebApiService.Controllers
                 }
 
                 return Ok(searchResults);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpGet("ERXDispensableDrugs")]
+        public async Task<IActionResult> GetERXDispensableDrugs()
+        {
+            try
+            {
+                var result = await _coreDrugOrchestartion.GetERXDispensableDrugs();
+
+                if (result == null)
+                {
+                    return NotFound("No drugs found matching the search criteria.");
+                }
+
+                return Ok(result);
             }
             catch (Exception ex)
             {
