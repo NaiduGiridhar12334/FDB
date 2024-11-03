@@ -13,15 +13,15 @@ namespace FDBWebApiService.Controllers
         {
             _coreDrugOrchestartion = coreDrugOrchestartion;
         }
-        [HttpGet("GetDispensableGenerics")]
-        public async Task<IActionResult> GetDispensableGenerics(string DrugNameDesc = null)
+        [HttpGet("GetDispensableDrugs")]
+        public async Task<IActionResult> GetDispensableDrugs(string DrugNameDesc = null)
         {
             try
             {
-                var searchResults = await _coreDrugOrchestartion.GetDispensableGenerics(DrugNameDesc);
+                var searchResults = await _coreDrugOrchestartion.GetDispensableDrugs(DrugNameDesc);
 
                 // Check if the Items list in searchResults contains any matching items
-                if (searchResults.Items == null || !searchResults.Items.Any())
+                if (searchResults== null)
                 {
                     return NotFound("No drugs found matching the search criteria.");
                 }

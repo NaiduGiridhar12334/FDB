@@ -1,9 +1,10 @@
 ﻿using FDBViewModel.CoreDrug;
+using FDBViewModel.CoreDrug.Business;
 
 namespace FDBOrchestration.CoreDrug.Interface
 {
     public interface ICoreDrugOrchestration
     {
-        Task<DispensableGenericsResponse> GetDispensableGenerics(string DrugNameDesc = null);
+        Task<List<FDBDispensableResponse>> GetDispensableDrugs(string DrugNameDesc = null);
     }
 }

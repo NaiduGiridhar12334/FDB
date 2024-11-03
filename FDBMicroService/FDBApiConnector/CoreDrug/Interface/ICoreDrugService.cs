@@ -1,4 +1,5 @@
 ﻿using FDBViewModel.CoreDrug;
+using FDBViewModel.CoreDrug.ApiConnector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace FDBApiConnector.CoreDrug.Interface
 {
     public interface ICoreDrugService
     {
-        Task<DispensableGenericsResponse> SearchDispensableGenerics(string dispensableDrugDesc);
+        Task<ApiDispensableResponse> SearchDispensableDrugs(string dispensableDrugDesc);
+
     }
 }

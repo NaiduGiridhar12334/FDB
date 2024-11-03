@@ -1,7 +1,9 @@
 ﻿using FDBApiConnector.CoreDrug.Interface;
 using FDBViewModel.CoreDrug;
+using FDBViewModel.CoreDrug.ApiConnector;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace FDBApiConnector.CoreDrug
 {
@@ -16,14 +18,18 @@ namespace FDBApiConnector.CoreDrug
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-        public async Task<DispensableGenericsResponse> SearchDispensableGenerics(string dispensableDrugDesc = null)  //DrugNameDesc
+ 
+        public async Task<ApiDispensableResponse> SearchDispensableDrugs(string dispensableDrugDesc)
         {
             var requestUri = $"DispensableDrugs/?callSystemName=Testing+str&callid=142541255&searchtype=StartsWith&searchText={dispensableDrugDesc}";
             HttpResponseMessage response = await _client.GetAsync(requestUri);
 
             if (response.IsSuccessStatusCode)
             {
-                var rootResult = await response.Content.ReadFromJsonAsync<DispensableGenericsResponse>();
+                // Use ReadFromJsonAsync to deserialize the JSON response
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+
+                var rootResult = JsonSerializer.Deserialize<ApiDispensableResponse>(jsonResponse);
 
                 if (rootResult != null)
                 {
