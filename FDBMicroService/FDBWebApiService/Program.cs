@@ -1,7 +1,7 @@
 using FDBApiConnector.CoreDrug;
 using FDBApiConnector.CoreDrug.Interface;
 using FDBOrchestration.CoreDrug;
-using FDBOrchestration.CoreDrug.Interfaces;
+using FDBOrchestration.CoreDrug.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 

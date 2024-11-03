@@ -8,7 +8,6 @@ namespace FDBApiConnector.CoreDrug
     public class CoreDrugService : ICoreDrugService
     {
         private readonly HttpClient _client;
-
         public CoreDrugService(HttpClient client)
         {
             _client = client;
@@ -24,7 +23,6 @@ namespace FDBApiConnector.CoreDrug
 
             if (response.IsSuccessStatusCode)
             {
-                // Use ReadFromJsonAsync to deserialize the JSON response
                 var rootResult = await response.Content.ReadFromJsonAsync<DispensableGenericsResponse>();
 
                 if (rootResult != null)
