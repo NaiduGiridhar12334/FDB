@@ -1,0 +1,6 @@
+@FDBWebApiService_HostAddress = http://localhost:5120
+
+GET {{FDBWebApiService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

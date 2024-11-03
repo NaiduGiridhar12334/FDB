@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/FDBMicroService/.vs
+/FDBMicroService/FDBApiConnector/bin/Debug/net8.0
+/FDBMicroService/FDBApiConnector/obj
+/FDBMicroService/FDBOrchestration/bin/Debug/net8.0
+/FDBMicroService/FDBOrchestration/obj
+/FDBMicroService/FDBViewModel/bin/Debug/net8.0
+/FDBMicroService/FDBViewModel/obj
+/FDBMicroService/FDBWebApiService/bin/Debug/net8.0
+/FDBMicroService/FDBWebApiService/obj
+/FDBMicroService/FDBWebApiService/FDBWebApiService.csproj.user
