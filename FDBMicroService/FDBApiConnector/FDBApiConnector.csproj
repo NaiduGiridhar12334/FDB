@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FDBViewModel\FDBViewModel.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
+    <ProjectReference Include="..\FDBViewModel\FDBViewModel.csproj" />
   </ItemGroup>
 
 </Project>

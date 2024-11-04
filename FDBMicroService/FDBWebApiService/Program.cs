@@ -1,7 +1,9 @@
+using FDBApiConnector.Common;
 using FDBApiConnector.CoreDrug;
 using FDBApiConnector.CoreDrug.Interface;
 using FDBOrchestration.CoreDrug;
 using FDBOrchestration.CoreDrug.Interface;
+using FDBViewModel.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,12 +11,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettings"));
 
 //orchestartion
 builder.Services.AddScoped<ICoreDrugOrchestration, CoreDrugOrchestration>();
 
 //service
-builder.Services.AddHttpClient<ICoreDrugService, CoreDrugService>();
+builder.Services.AddScoped<ICoreDrugService, CoreDrugService>();
+builder.Services.AddHttpClient<IApiClient, ApiClient>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
