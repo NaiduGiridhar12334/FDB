@@ -8,6 +8,6 @@ namespace FDBOrchestration.CoreDrug.Interface
     {
         Task<List<FDBDispensableResponse>> GetDispensableDrugs(string DrugNameDesc = null);
 
-        Task<ApiERXDispensableDrugResponse> GetERXDispensableDrugs();
+        Task<List<FDBERXDispensableDrugResponse>> GetERXDispensableDrugs(string PrescribableDrugDesc);
     }
 }

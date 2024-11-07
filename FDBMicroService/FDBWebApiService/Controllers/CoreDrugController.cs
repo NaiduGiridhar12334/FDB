@@ -36,11 +36,11 @@ namespace FDBWebApiService.Controllers
         }
 
         [HttpGet("ERXDispensableDrugs")]
-        public async Task<IActionResult> GetERXDispensableDrugs()
+        public async Task<IActionResult> GetERXDispensableDrugs(string PrescribableDrugDesc = null)
         {
             try
             {
-                var result = await _coreDrugOrchestartion.GetERXDispensableDrugs();
+                var result = await _coreDrugOrchestartion.GetERXDispensableDrugs(PrescribableDrugDesc);
 
                 if (result == null)
                 {

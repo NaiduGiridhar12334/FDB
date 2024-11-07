@@ -39,10 +39,22 @@ namespace FDBOrchestration.CoreDrug
             return fDBDispensableResponses;
         }
 
-        public async Task<ApiERXDispensableDrugResponse> GetERXDispensableDrugs()
+        public async Task<List<FDBERXDispensableDrugResponse>> GetERXDispensableDrugs(string PrescribableDrugDesc)
         {
-            var response = await this._coreDrugService.GetERXDispensableDrugs();
-            return response;
+            List<FDBERXDispensableDrugResponse> fDBERXDispensableDrugs = new List<FDBERXDispensableDrugResponse>();
+            var response = await this._coreDrugService.GetERXDispensableDrugs(PrescribableDrugDesc);
+            if (response != null && response.Items != null)
+            {
+                foreach (var item in response.Items)
+                {
+                    FDBERXDispensableDrugResponse fDBERXDispensableDrug = new FDBERXDispensableDrugResponse();
+                    fDBERXDispensableDrug.PrescribableDrugDesc = item.DispensableDrugDesc;
+                    fDBERXDispensableDrug.MedStrength = item.MedStrength;
+                    fDBERXDispensableDrug.MedStrengthUnit = item.MedStrengthUnit;
+                    fDBERXDispensableDrugs.Add(fDBERXDispensableDrug);
+                }
+            }
+            return fDBERXDispensableDrugs;
         }
     }
 }

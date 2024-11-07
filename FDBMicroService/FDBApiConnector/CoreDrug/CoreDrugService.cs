@@ -22,9 +22,9 @@ namespace FDBApiConnector.CoreDrug
             var requestUri = $"v1_3/DispensableDrugs/?callSystemName=Testing+str&callid=142541255&searchtype=StartsWith&searchText={dispensableDrugDesc}";
             return await _apiClient.GetAsync<ApiDispensableResponse>(requestUri);
         }
-        public async Task<ApiERXDispensableDrugResponse> GetERXDispensableDrugs()
+        public async Task<ApiERXDispensableDrugResponse> GetERXDispensableDrugs(string PrescribableDrugDesc)
         {
-            var requestUri = $"v1_4/ERXDispensableDrugs/?callSystemName=Testing+str&callid=142541255";
+            var requestUri = $"v1_4/ERXDispensableDrugs/?callSystemName=Testing+str&callid=142541255&searchtype=StartsWith&searchText={PrescribableDrugDesc}";
             return await _apiClient.GetAsync<ApiERXDispensableDrugResponse>(requestUri);
         }
 

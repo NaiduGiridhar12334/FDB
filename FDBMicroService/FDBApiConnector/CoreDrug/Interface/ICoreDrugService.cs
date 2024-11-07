@@ -11,7 +11,7 @@ namespace FDBApiConnector.CoreDrug.Interface
     public interface ICoreDrugService
     {
         Task<ApiDispensableResponse> SearchDispensableDrugs(string dispensableDrugDesc);
-        Task<ApiERXDispensableDrugResponse> GetERXDispensableDrugs();
+        Task<ApiERXDispensableDrugResponse> GetERXDispensableDrugs(string PrescribableDrugDesc);
 
     }
 }
